@@ -66,4 +66,23 @@ class QueryBuilder
         }
     }
 
+    public function update($tableName, $params, $id) {
+        $query = 
+            "update ${tableName} set " .
+            implode('= ?, ' , array_keys($params)) . ' = ? '.
+            " where id = ?";
+
+            $elements = array_values($params);
+            array_push($elements, $id);
+
+            try {
+                $statement = $this->pdo->prepare($query);
+                $statement->execute($elements);
+            } catch (Exception $exception) {
+                echo 'Can not insert element<br>';
+                die($exception->getMessage());
+            }
+        
+    }
+
 }
