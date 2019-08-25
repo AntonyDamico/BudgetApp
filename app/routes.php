@@ -2,7 +2,9 @@
 
 return [
 
-    'GET' => [],
+    'GET' => [
+        '' => 'DummyController@list'
+    ],
 
     'POST' => []
 ];
