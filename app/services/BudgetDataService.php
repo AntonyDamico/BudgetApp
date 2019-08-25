@@ -13,6 +13,6 @@ class BudgetDataService {
         $sql = "SELECT * FROM " . self::TABLE_NAME;
         $statement = Container::get('database')->prepare($sql);
         $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_CLASS);
+        return $statement->fetchAll(PDO::FETCH_ASSOC)[0];
     }
 }

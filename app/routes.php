@@ -3,7 +3,8 @@
 return [
 
     'GET' => [
-        '' => 'DummyController@list'
+        '' => 'DummyController@list',
+        'budget' => 'BudgetDataController@get'
     ],
 
     'POST' => []
