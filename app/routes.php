@@ -7,5 +7,8 @@ return [
         'budget' => 'BudgetDataController@get'
     ],
 
-    'POST' => []
+    'POST' => [
+        'budget/update' => 'BudgetDataController@update'
+    ]
+    
 ];
