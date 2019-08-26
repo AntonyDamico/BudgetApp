@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Services\BudgetDataService;
+use App\Validators\BudgetDataValidator;
 
 class BudgetDataController
 {
@@ -15,12 +16,7 @@ class BudgetDataController
 
     public function update()
     {
-        if (
-            !isset($_POST['income']) || !isset($_POST['savings_perc'])
-            || $_POST['income'] < 0 || $_POST['savings_perc'] < 0
-        ) {
-            die("error with post parameters\n");
-        }
+        BudgetDataValidator::validate($_POST);
 
         $data = [
             'income' => $_POST['income'],
@@ -30,6 +26,7 @@ class BudgetDataController
         $data['savings'] = $data['income'] * $data['savings_perc'] * 0.01;
 
         BudgetDataService::update($data);
+        
         echo json_encode([
             'status' => 200,
             'response' => 'budget updated'
