@@ -15,6 +15,7 @@ class BudgetDataController
         echo json_encode($budgetData);
     }
 
+
     public function update()
     {
         list($income, $savingsPerc) = BudgetDataValidator::validate($_POST);

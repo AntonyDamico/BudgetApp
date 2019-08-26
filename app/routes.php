@@ -10,5 +10,5 @@ return [
     'POST' => [
         'budget/update' => 'BudgetDataController@update'
     ]
-    
+
 ];

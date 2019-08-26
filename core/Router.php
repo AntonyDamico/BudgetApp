@@ -12,6 +12,7 @@ class Router
         'POST' => []
     ];
 
+
     public static function load($routes)
     {
         $router = new static();
@@ -19,17 +20,20 @@ class Router
         return $router;
     }
 
+    
     private function register($methodRoutes)
     {
         $this->registerGet($methodRoutes['GET']);
         $this->registerPost($methodRoutes['POST']);
     }
 
+
     public function registerGet($routes)
     {
         foreach ($routes as $uri => $controller)
             $this->routes['GET'][$uri] = $controller;
     }
+
 
     public function registerPost($routes)
     {
@@ -47,10 +51,12 @@ class Router
         );
     }
 
+
     private function parseRequest($uri, $method)
     {
         return explode('@', $this->routes[$method][$uri]);
     }
+
 
     private function resolveController($controllerName, $method)
     {
