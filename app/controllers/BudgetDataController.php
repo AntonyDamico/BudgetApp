@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\BudgetData;
 use App\Services\BudgetDataService;
 use App\Validators\BudgetDataValidator;
 
@@ -16,17 +17,10 @@ class BudgetDataController
 
     public function update()
     {
-        BudgetDataValidator::validate($_POST);
-
-        $data = [
-            'income' => $_POST['income'],
-            'savings_perc' => $_POST['savings_perc']
-        ];
-
-        $data['savings'] = $data['income'] * $data['savings_perc'] * 0.01;
-
+        list($income, $savingsPerc) = BudgetDataValidator::validate($_POST);
+        $data = (new BudgetData($income, $savingsPerc))->getNewData();
         BudgetDataService::update($data);
-        
+
         echo json_encode([
             'status' => 200,
             'response' => 'budget updated'
