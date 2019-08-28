@@ -12,7 +12,7 @@ class Container
         static::$container[$key] = $value;
     }
 
-    
+
     public static function get($key)
     {
         return static::$container[$key];
