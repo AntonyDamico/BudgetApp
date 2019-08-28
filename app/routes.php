@@ -4,7 +4,9 @@ return [
 
     'GET' => [
         '' => 'DummyController@list',
-        'budget' => 'BudgetDataController@get'
+        'budget' => 'BudgetDataController@get',
+
+        'expenses' => 'ExpensesController@get'
     ],
 
     'POST' => [
