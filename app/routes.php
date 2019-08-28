@@ -10,7 +10,9 @@ return [
     ],
 
     'POST' => [
-        'budget/update' => 'BudgetDataController@update'
+        'budget/update' => 'BudgetDataController@update',
+
+        'expenses' => 'ExpensesController@create'
     ]
 
 ];

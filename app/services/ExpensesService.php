@@ -17,4 +17,11 @@ class ExpensesService
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_CLASS);
     }
+
+
+    public static function create($data)
+    {
+        return Container::get('database')
+            ->insert(self::TABLE_NAME, $data);
+    }
 }
